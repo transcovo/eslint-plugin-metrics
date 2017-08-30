@@ -61,6 +61,10 @@ function walk(dir, report = []) {
   const files = fs.readdirSync(dir);
 
   for (const file of files) {
+    if (['node_modules', 'coverage', '.git', '.github'].indexOf(file) !== -1) {
+      continue;
+    }
+
     const filePath = `${dir}/${file}`;
     const stat = fs.statSync(filePath);
 
@@ -85,6 +89,10 @@ Metric | Type | Comment |
 ---: | --- | --- |`;
   for (const metric of report) {
     template += `\n\`${metric.name}\` | increment | ${metric.description}`;
+  }
+
+  if (!fs.existsSync(`${process.cwd()}/docs`)) {
+    fs.mkdirSync(`${process.cwd()}/docs`);
   }
 
   fs.writeFileSync(`${process.cwd()}/docs/metrics.md`, template);
