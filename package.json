@@ -9,6 +9,9 @@
   ],
   "author": "Gilles Rasigade",
   "main": "lib/index.js",
+  "bin": {
+    "metrics": "bin/metrics.js"
+  },
   "scripts": {
     "test": "mocha tests --recursive"
   },
