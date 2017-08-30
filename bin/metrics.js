@@ -75,7 +75,7 @@ function walk(dir, report = []) {
 }
 
 function main(src = '.') {
-  const report = walk(`${process.cwd()}/src`);
+  const report = walk(`${process.cwd()}/${src}`);
 
   logger.info({ report }, 'Generated report');
 
