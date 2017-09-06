@@ -39,6 +39,13 @@ ruleTester.run("metrics-definition", rule, {
                 message: "Only a single argument is accepted on metrics.increment.",
                 type: ""
             }]
+        },
+        {
+          code: 'var x = metrics.increment;',
+          errors: [{
+                message: 'metrics.increment can only be called',
+                type: ''
+          }]
         }
     ]
 });
