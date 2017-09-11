@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-metrics",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Check metrics definition",
   "keywords": [
     "eslint",
