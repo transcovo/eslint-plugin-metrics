@@ -22,7 +22,9 @@ ruleTester.run("metrics-definition", rule, {
 
     valid: [
         'metric.increment("test.eslint")',
-        'metrics.increment("test.eslint")'
+        'metrics.increment("test.eslint")',
+        'metrics.increment.args',
+        'metrics.increment.mock',
     ],
 
     invalid: [
@@ -41,11 +43,19 @@ ruleTester.run("metrics-definition", rule, {
             }]
         },
         {
-          code: 'var x = metrics.increment;',
+          code: 'var x = metrics.increment.somethingWrong;',
           errors: [{
                 message: 'metrics.increment can only be called',
                 type: ''
           }]
+        },
+        {
+            code: 'var x = metrics.increment;',
+            errors: [{
+                message: 'metrics.increment can only be called',
+                type: ''
+            }]
         }
     ]
 });
+
